@@ -88,6 +88,43 @@
             max-width: 600px;
             line-height: 1.6;
         }
+
+        .btn {
+            color: #ff4757;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid #ff4757;
+            padding: 10px 20px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: bold;
+            background: transparent;
+            position: relative;
+            transition: all 1s;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            left: -40px;
+            transform: skewX(45deg);
+            background-color: #ff4757;
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::before {
+            width: 160%;
+        }
+
     </style>
 </head>
 <body>
@@ -104,7 +141,7 @@
         <div>
             <h1>Welcome, I'm Lerick Ashley</h1>
             <p>I'm a full stack developer.</p>
-            <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">View my portfolio</button>
+            <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});" style="margin: 1rem 0">View my portfolio</button>
         </div>
     </section>
 

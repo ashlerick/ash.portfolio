@@ -343,7 +343,8 @@
                 description: "A streamlined tool for monitoring task completion and development milestones.",
                 image: "project/project-progress.png", 
                 languages: ["HTML", "CSS", "JavaScript"],
-                url: "https://ashlerick.github.io/project-progress-tracker/"
+                url: "https://ashlerick.github.io/project-progress-tracker/",
+                github: "https://github.com/ashlerick/project-progress-tracker"
             }
         ];
 
@@ -362,7 +363,10 @@
                         <div class="tech-stack">
                             ${project.languages.map(lang => `<span>${lang}</span>`).join('')}
                         </div>
-                        <a href="${project.url}" target="_blank" class="btn-small">Live Demo</a>
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <a href="${project.url}" target="_blank" class="btn-small">Live Demo</a>
+                            <a href="${project.github}" target="_blank" class="btn-small" style="border-color: #bbb; color: #bbb;">Learn More</a>
+                        </div>
                     </div>
                 </div>
             `).join('');
@@ -376,7 +380,6 @@
                 </div>
             `;
 
-            // Combine them and inject into the HTML
             projectContainer.innerHTML = projectHTML + comingSoonHTML;
         }
 

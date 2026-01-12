@@ -153,6 +153,100 @@
             }
         }
     </style>
+
+    <style>
+        /* Project Section Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #2a2a2a;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff4757;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #333;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: #ff4757;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-stack span {
+            background: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #bbb;
+        }
+
+        .btn-small {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ff4757;
+            color: #ff4757;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-small:hover {
+            background: #ff4757;
+            color: white;
+        }
+
+        .project-card.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #444;
+            background: transparent;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -192,9 +286,32 @@
     </section>
 
     <section id="projects">
-        <div>
-            <h1>Projects</h1>
-            <p>Showcase your amazing projects here.</p>
+        <div class="container">
+            <h1 class="section-title">Projects</h1>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Project Progress Tracker">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Progress Tracker</h3>
+                        <p>A streamlined tool for monitoring task completion and development milestones.</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="https://ashlerick.github.io/project-progress-tracker/" target="_blank" class="btn-small">Live Demo</a>
+                    </div>
+                </div>
+                
+                <div class="project-card placeholder">
+                    <div class="project-content">
+                        <h3>Coming Soon</h3>
+                        <p>Conquering the next challenge...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

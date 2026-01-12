@@ -172,6 +172,14 @@
 
     <style>
         /* Project Section Layout */
+        #projects {
+            background-color: #1a1a1a;
+            display: flex;
+            flex-direction: column; /* Stack container and gallery vertically */
+            align-items: center; 
+            padding-bottom: 100px;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -263,6 +271,51 @@
             opacity: 0.6;
         }
     </style>
+
+    <style>
+        .gallery-container {
+            width: 100%;
+            max-width: 1100px; /* Matches your project container width */
+            margin-top: 80px;  /* Significant gap between cards and gallery */
+            overflow: hidden;
+        }
+
+        .carousel-viewport {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scroll 40s linear infinite; /* Slightly slower for better UX */
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-img {
+            width: 300px; /* Slightly larger */
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .carousel-img:hover {
+            transform: scale(1.05);
+            border-color: #ff4757;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -311,6 +364,14 @@
             <h1 class="section-title">Projects</h1>
             <div id="projects-list" class="projects-grid"></div>
         </div>
+
+        <div class="gallery-container">
+            <h2 style="color: #ff4757; margin-bottom: 20px; font-size: 32px;">Project Gallery</h2>
+            <div class="carousel-viewport">
+                <div class="carousel-track" id="carousel-track">
+                    </div>
+            </div>
+        </div>
     </section>
 
     <section id="contact">
@@ -335,7 +396,10 @@
 
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
-        window.onload = () => loadProjects();
+        window.onload = () => {
+            loadProjects();
+            loadCarousel();
+        };
 
         const myProjects = [
             {
@@ -346,6 +410,16 @@
                 url: "https://ashlerick.github.io/project-progress-tracker/",
                 github: "https://github.com/ashlerick/project-progress-tracker"
             }
+        ];
+
+        const galleryImages = [
+            "project/gallery/incident_report.jpg",
+            "project/gallery/incident_monitoring.jpg",
+
+            "project/gallery/supplier_form.png",
+            "project/gallery/expense_form.png",
+            "project/gallery/summary_reports.png",
+
         ];
 
         function loadProjects() {
@@ -381,6 +455,18 @@
             `;
 
             projectContainer.innerHTML = projectHTML + comingSoonHTML;
+        }
+
+        function loadCarousel() {
+            const track = document.getElementById('carousel-track');
+            if (!track) return;
+
+            // We combine the list with itself to create a seamless loop
+            const fullList = [...galleryImages, ...galleryImages];
+
+            track.innerHTML = fullList.map(src => `
+                <img src="${src}" class="carousel-img" alt="Gallery Work">
+            `).join('');
         }
 
         navLinks.forEach(link => {

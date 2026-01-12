@@ -18,6 +18,21 @@
             color: #fff;
         }
 
+        @media (max-width: 600px) {
+            header nav {
+                display: flex;
+                overflow-x: auto;          /* Allows scrolling left to right */
+                white-space: nowrap;       /* Keeps everything in a single row */
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhones */
+                padding: 10px 20px;
+                justify-content: flex-start; /* Aligns to left so user knows to scroll */
+            }
+            
+            header nav::-webkit-scrollbar {
+                display: none;             /* Hides the scrollbar for a cleaner look */
+            }
+        }
+
         header {
             position: fixed;
             top: 0;
